@@ -20,7 +20,12 @@ public class LssApp {
 
     @Bean
     public Converter<String, User> messageConverter() {
-        return id -> userRepository().findUser(Long.valueOf(id));
+        return new Converter<String, User>() {
+            @Override
+            public User convert(String id) {
+                return userRepository().findUser(Long.valueOf(id));
+            }
+        };
     }
 
     public static void main(String[] args) {
