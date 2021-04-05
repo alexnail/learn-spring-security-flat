@@ -30,11 +30,13 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
         http
                 .authorizeRequests()
-                .antMatchers("/delete/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-        ;
+                .loginPage("/login").permitAll()
+                .loginProcessingUrl("/doLogin")
+                .and()
+                .csrf().disable();
     } // @formatter:on
 
     @Bean
