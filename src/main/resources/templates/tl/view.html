@@ -1,6 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/layout" layout:decorate="~{layout}">
 <head>
     <title>Users : View</title>
 </head>
@@ -9,7 +7,7 @@
 <div layout:fragment="content" class="container">
     <div class="alert alert-success" th:if="${globalMessage}" th:text="${globalMessage}">Some Success message</div>
     <div class="pull-right">
-        <a th:href="@{/}" href="list.html"> Users </a>
+        <a th:href="@{/user/}" href="list.html"> Users </a>
     </div>
     <dl>
         <dt>ID</dt>
@@ -22,8 +20,7 @@
         <dd id="email" th:text="${user.email}">Email</dd>
     </dl>
     <div class="pull-left">
-        <a href="users" th:href="@{'/delete/' + ${user.id}}">delete </a> |
-        <a href="form.html" th:href="@{'/modify/' + ${user.id}}"> modify </a>
+        <a href="users" th:href="@{'/user/delete/' + ${user.id}}"> delete </a> | <a href="form.html" th:href="@{'/user/modify/' + ${user.id}}"> modify </a>
     </div>
 </div>
 </body>
